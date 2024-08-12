@@ -33,6 +33,7 @@ export const LoginPage = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
+        console.log({ email, password });
 
         // console.log({ email, password });
         //! No es esta la acción a despachar
@@ -48,6 +49,7 @@ export const LoginPage = () => {
     return (
         <AuthLayout title="Login">
             <form
+                aria-label="submit-form"
                 onSubmit={onSubmit}
                 className="animate__animated animate_fadeIn animate__faster"
             >
@@ -71,6 +73,9 @@ export const LoginPage = () => {
                             placeholder="Contraseña"
                             fullWidth
                             name="password"
+                            inputProps={{
+                                "data-testid": "password",
+                            }}
                             value={password}
                             onChange={onInputChange}
                         />
@@ -102,6 +107,7 @@ export const LoginPage = () => {
                                 disabled={isAuthenticating}
                                 variant="contained"
                                 fullWidth
+                                aria-label="google-btn"
                                 onClick={onGoogleSignIn}
                             >
                                 <Google />
